@@ -51,15 +51,15 @@
         ${state ? `<div class="box"><div class="label">State</div>${state}</div>` : ''}
         <p class="muted">This code is short-lived (usually a few minutes). Exchange it for tokens now, from your own machine &mdash; not from this page &mdash; since the exchange needs your Client Secret, which should never be placed in public site code.</p>
         <p class="label" style="margin-top:24px;">Token exchange (run locally)</p>
-        <pre>curl -X POST https://auth.tesla.com/oauth2/v3/token \\
+        <pre>curl -X POST https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token \\
   -H "Content-Type: application/x-www-form-urlencoded" \\
   -d "grant_type=authorization_code" \\
-  -d "client_id=YOUR_CLIENT_ID" \\
+  -d "client_id=33a3fe44-dd98-47e5-b5a5-740657caa626" \\
   -d "client_secret=YOUR_CLIENT_SECRET" \\
   -d "code=${code}" \\
   -d "redirect_uri=https://buzzbombers.github.io/callback" \\
   -d "audience=https://fleet-api.prd.na.vn.cloud.tesla.com"</pre>
-        <p class="muted">Replace YOUR_CLIENT_ID / YOUR_CLIENT_SECRET with the values from your Tesla developer dashboard. Adjust the audience region host if your app/vehicle isn't in North America.</p>`;
+        <p class="muted">Replace YOUR_CLIENT_SECRET with the value from your Tesla developer dashboard (Credentials &amp; APIs tab). The client_id above is already yours. Audience is set for North America/Asia-Pacific (includes Australia).</p>`;
     } else {
       el.innerHTML = `<p class="muted">No authorization code found in the URL. This page is meant to be reached via Tesla's OAuth redirect, not visited directly.</p>`;
     }
